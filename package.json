@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/apietryga/vue-htmlize/issues"
   },
-  "homepage": "https://github.com/apietryga/vue-htmlize#readme"
+  "homepage": "https://github.com/apietryga/vue-htmlize#readme",
+  "dependencies": {
+    "vue-htmlize": "^1.0.1"
+  }
 }
