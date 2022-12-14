@@ -3,6 +3,8 @@ import { htmlize }from "../index.js";
 
 // console.log(htmlize.byRouter())
 
+htmlize.config.ignore = [ 'favicon.ico', 'img' ]
+
 const router = {
   getRoutes() {
     return [
