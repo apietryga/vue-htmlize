@@ -1,0 +1,27 @@
+{
+  "name": "vue-html",
+  "version": "1.0.0",
+  "description": "Make working OG Tags and SEO in pure Vue projects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apietryga/vue-html.git"
+  },
+  "keywords": [
+    "vue",
+    "html",
+    "seo",
+    "meta",
+    "og",
+    "tags"
+  ],
+  "author": "apietryga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apietryga/vue-html/issues"
+  },
+  "homepage": "https://github.com/apietryga/vue-html#readme"
+}
