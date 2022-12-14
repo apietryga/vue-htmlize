@@ -1,4 +1,4 @@
-# vue-html
+# vue-htmlize
 Make working OG Tags and SEO in pure Vue projects.
 
 ## Install
