@@ -1,9 +1,7 @@
-// import { htmlize } from "vue-htmlize";
-import { htmlize }from "../index.js";
-
-// console.log(htmlize.byRouter())
+import htmlize from "../index.js";
 
 htmlize.config.ignore = [ 'favicon.ico', 'img' ]
+htmlize.config.clean = true
 
 const router = {
   getRoutes() {
@@ -3035,8 +3033,5 @@ const router = {
     ]
   }
 }
-
-// console.log({ router })
-// console.log({ htmlize })
 
 htmlize.byRouter(router)

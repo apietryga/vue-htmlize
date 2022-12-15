@@ -4,8 +4,9 @@ const path = require('path');
 const htmlize = {
   config: {
     path: "public",
-    ignore: [ 'favicon.ico' ],
+    ignore: [ 'favicon.ico', '.htaccess' ],
     missingFolders: [],
+    clean: false,
   },
   byRouter( router ){
     htmlize.generateHTMLs( router.getRoutes() )
@@ -28,36 +29,18 @@ const htmlize = {
   },
   async deleteUnusedFiles( currentPathes ){
     const allPathes = await htmlize.getPathMap(path.resolve( htmlize.config.path ));
-    const unusedPathes = allPathes.filter( p => ! currentPathes.includes( p ) )  // filter from current list
-
-    // console.log(htmlize.config.ignore)
-    // ignore folders
-    const toRemovePathes = []
-    for(const ig of htmlize.config.ignore){
-      const iPath = path.resolve(htmlize.config.path, ig)
-      // console.log(path.resolve(ig))
-      let contains = false
-      let uPath;
-      for(uPath of unusedPathes){
-        if(!uPath.includes(iPath)){
-          // console.log({uPath, iPath})
-          // console.log('true')
-          contains = true
-          break
+    const unusedPathes = allPathes
+      .filter( p => ! currentPathes.includes( p ) )  // filter from current list
+      .filter( uPath => {   // filter from ignored list
+        for(const ig of htmlize.config.ignore){
+          const iPath = path.resolve(htmlize.config.path, ig)
+          if(uPath.includes(iPath)){ return false }
         }
-      }
-      // if(!contains){
-      if(uPath && !toRemovePathes.includes(uPath)){
-        toRemovePathes.push(uPath)
-      }
-    }
+        return true
+      })
 
-    for( const uPath of toRemovePathes){
-      if(fs.lstatSync(uPath).isDirectory() ){
-        fs.rmdirSync( uPath )
-      }else{
-        fs.rmSync( uPath )
-      }
+    for( const uPath of unusedPathes ){
+      fs.lstatSync(uPath).isDirectory() ? fs.rmdirSync( uPath ) : fs.rmSync( uPath );
     }    
   },
   async getPathMap( dir ){
@@ -78,7 +61,9 @@ const htmlize = {
       pathes.push(sPath)
     }
     pathes.push( ...htmlize.config.missingFolders )
-    htmlize.deleteUnusedFiles( pathes )
+    if(this.config.clean){
+      htmlize.deleteUnusedFiles( pathes )
+    }
   },
   serializeNames( name ){
     if(name.includes("*")){ return '/404'}
@@ -87,4 +72,4 @@ const htmlize = {
   }
 }
 
-exports.htmlize = htmlize 
+module.exports = htmlize
