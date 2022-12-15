@@ -1,6 +1,6 @@
 import htmlize from "../index.js";
 
-htmlize.config.ignore = [ 'favicon.ico', 'img' ]
+htmlize.config.ignore = [ '.htaccess', 'favicon.ico', 'img' ]
 htmlize.config.clean = true
 
 const router = {

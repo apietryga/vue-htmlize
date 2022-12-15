@@ -1,6 +1,6 @@
 {
   "name": "vue-htmlize",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Make working OG Tags and SEO in pure Vue projects.",
   "main": "index.js",
   "scripts": {
