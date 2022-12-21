@@ -4,7 +4,8 @@
   "description": "Make working OG Tags and SEO in pure Vue projects.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "vue-htmlize": "echo \" ELO \" ELO "
   },
   "repository": {
     "type": "git",
@@ -23,8 +24,5 @@
   "bugs": {
     "url": "https://github.com/apietryga/vue-htmlize/issues"
   },
-  "homepage": "https://github.com/apietryga/vue-htmlize#readme",
-  "dependencies": {
-    "vue-htmlize": "^1.0.1"
-  }
+  "homepage": "https://github.com/apietryga/vue-htmlize#readme"
 }
