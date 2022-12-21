@@ -21,10 +21,19 @@ module.exports = [
 
   ...
 ```
+![configure routes](/img/routes.webp)
+
+
 ### Run
 ```bash
-node -e 'require(\"../index.js\").cmdRun()'
+node -e 'require(\"vue-htmlize\").cmdRun()'
 ```
+
+<!-- You can add it before build in package.json: 
+```json
+"scripts": {
+  "build": "vite build",
+``` -->
 
 ### Output
 
