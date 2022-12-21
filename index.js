@@ -11,7 +11,11 @@ const htmlize = {
   },
   byRouter( router ){
     htmlize.generateHTMLs( router.getRoutes() )
-    htmlize.generateHtaccess( )
+  },
+  cmdRun( ){
+    const p = path.resolve("htmlize/routes.js");
+    const routes = require( p )
+    htmlize.generateHTMLs( routes )
   },
   completeMissingFolders( route ){
     for(const [ index, part ] of route.path.split("/").entries()){
@@ -61,6 +65,7 @@ const htmlize = {
     return result
   },
   generateHTMLs( routes ){
+    htmlize.generateHtaccess( )
     const pathes = htmlize.config.ignore.map( p => { return path.resolve( htmlize.config.dist, p ) })
     pathes.push( path.resolve( htmlize.config.dist ) )
     for(const route of routes){

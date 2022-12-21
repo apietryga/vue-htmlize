@@ -1,4 +1,4 @@
-[
+module.exports = [
   {
       "path": "/projects/anadar",
       "name": "anadar",
