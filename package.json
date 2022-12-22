@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/apietryga/vue-htmlize#readme",
   "dependencies": {
+    "execa": "^6.1.0",
     "make-runnable": "^1.4.1",
     "vue-htmlize": "^1.0.3"
   }

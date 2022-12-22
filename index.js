@@ -1,5 +1,7 @@
 const fs = require('fs')
 const path = require('path');
+// const { exec } = require('exec')
+const { exec } = require('child_process');
 
 const htmlize = {
   config: {
@@ -48,6 +50,24 @@ const htmlize = {
     for( const uPath of unusedPathes ){
       fs.lstatSync(uPath).isDirectory() ? fs.rmdirSync( uPath ) : fs.rmSync( uPath );
     }    
+  },
+  async deploy(){
+    try {
+      await exec("git", ["checkout", "--orphan", "public"]);
+      console.log("Building started...");
+      await exec("npm", ["run", "build"]);
+      const folderName = fs.existsSync("dist") ? "dist" : "build";
+      await exec("git", ["--work-tree", folderName, "add", "--all"]);
+      await exec("git", ["--work-tree", folderName, "commit", "-m", "public"]);
+      await exec("git", ["push", "origin", "HEAD:public", "--force"]);
+      await exec("git", ["checkout", "-f", "master"]);
+      await exec("git", ["branch", "-D", "public"]);
+      console.log("Successfully deployed, check your settings");
+    } catch (e) {
+      console.log(e.message);
+      process.exit(1);
+    }
+
   },
   async getPathMap( dir ){
     const dirents = await fs.promises.readdir(dir, { withFileTypes: true })
