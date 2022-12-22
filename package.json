@@ -1,0 +1,34 @@
+{
+  "name": "vue-htmlize",
+  "version": "1.0.4",
+  "description": "Make working OG Tags and SEO in pure Vue projects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "vue-htmlize": "echo \" ELO \" ELO ",
+    "build": "echo \" ELO \" ELO "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apietryga/vue-htmlize.git"
+  },
+  "keywords": [
+    "vue",
+    "html",
+    "seo",
+    "meta",
+    "og",
+    "tags"
+  ],
+  "author": "apietryga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apietryga/vue-htmlize/issues"
+  },
+  "homepage": "https://github.com/apietryga/vue-htmlize#readme",
+  "dependencies": {
+    "execa": "^6.1.0",
+    "make-runnable": "^1.4.1",
+    "vue-htmlize": "^1.0.3"
+  }
+}
