@@ -1,7 +1,6 @@
 const fs = require('fs')
 const path = require('path');
-// const { exec } = require('exec')
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
 
 const htmlize = {
   config: {
@@ -51,17 +50,19 @@ const htmlize = {
       fs.lstatSync(uPath).isDirectory() ? fs.rmdirSync( uPath ) : fs.rmSync( uPath );
     }    
   },
-  async deploy(){
+  // async deploy(){
+  deploy(){
     try {
-      await exec("git", ["checkout", "--orphan", "public"]);
+      // await execSync("git", ["checkout", "--orphan", "public"]);
+      execSync("git checkout --orphan public");
       console.log("Building started...");
-      await exec("npm", ["run", "build"]);
+      execSync("npm run build");
       const folderName = fs.existsSync("dist") ? "dist" : "build";
-      await exec("git", ["--work-tree", folderName, "add", "--all"]);
-      await exec("git", ["--work-tree", folderName, "commit", "-m", "public"]);
-      await exec("git", ["push", "origin", "HEAD:public", "--force"]);
-      await exec("git", ["checkout", "-f", "master"]);
-      await exec("git", ["branch", "-D", "public"]);
+      execSync("git --work-tree " + folderName + " add --all");
+      execSync("git --work-tree " + folderName + " commit -m public");
+      execSync("git push origin HEAD:public --force");
+      execSync("git checkout -f master");
+      execSync("git branch -D public");
       console.log("Successfully deployed, check your settings");
     } catch (e) {
       console.log(e.message);

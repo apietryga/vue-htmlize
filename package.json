@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "vue-htmlize": "echo \" ELO \" ELO "
+    "vue-htmlize": "echo \" ELO \" ELO ",
+    "build": "echo \" ELO \" ELO "
   },
   "repository": {
     "type": "git",
