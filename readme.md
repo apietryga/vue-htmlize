@@ -1,5 +1,5 @@
 # vue-htmlize
-Make working OG Tags and SEO in pure Vue projects.
+Make working Meta Tags in pure Vue projects.
 Improve your SEO in SPA apps!
 
 ## Get started
@@ -18,7 +18,6 @@ module.exports = [
       "path": "/projects/anadar",
       "name": "anadar",
       "meta": {},
-
   ...
 ```
 ![configure routes](/img/routes.webp)
