@@ -101,7 +101,8 @@ const htmlize = {
     }
   },
   generateHtaccess( ){
-    fs.writeFileSync( htmlize.config.dist + '/.htaccess', `RewriteEngine On\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteRule ^([^\.]+)$ $1.php [NC,L]` )
+    // fs.writeFileSync( htmlize.config.dist + '/.htaccess', `RewriteEngine On\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteRule ^([^\.]+)$ $1.php [NC,L]` )
+    fs.writeFileSync( htmlize.config.dist + '/.htaccess', `RewriteEngine On\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteRule ^([^\.]+)$ $1.html [NC,L]` )
   },
   serializeNames( name ){
     if(name.includes("*")){ return '/404'}
